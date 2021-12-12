@@ -4,7 +4,7 @@ import ProjectsFooter from './ProjectsFooter'
 import ProjectsHeader from './ProjectsHeader'
 import ProjectsInfo from './ProjectsInfo'
 
-const Content = ({ projects, atticProjects }) => {
+const Content = ({ projects, atticProjects, projectsFooterItems }) => {
   return (
     <div className={style.hero}>
       <ProjectsHeader />
