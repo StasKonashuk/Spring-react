@@ -1,16 +1,22 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Projects from './Projects'
 import style from './Content.module.css'
 import AtticProjects from './AtticProjects'
+import data from '../data/data'
 
-const ProjectsInfo = ({ projects, atticProjects }) => {
+const ProjectsInfo = () => {
   const [value, setValue] = useState('')
-  const filteredProjects = [...projects].filter(project => {
-    return (
-      project.title.toLowerCase().includes(value.toLowerCase()) ||
-      project.text.toLowerCase().includes(value.toLowerCase())
+  const [filteredProjects, setFilteredProjects] = useState([])
+  useEffect(() => {
+    setFilteredProjects(
+      data.projects.filter(project => {
+        return (
+          project.title.toLowerCase().includes(value.toLowerCase()) ||
+          project.text.toLowerCase().includes(value.toLowerCase())
+        )
+      })
     )
-  })
+  }, [value])
   return (
     <div className={style.contentContainer}>
       <form className={style.projectsForm}>
@@ -18,11 +24,11 @@ const ProjectsInfo = ({ projects, atticProjects }) => {
           placeholder="Find your project"
           type="text"
           className={style.projInput}
-          onChange={event => setValue(event.target.value)}
+          onChange={e => setValue(e.target.value)}
         />
       </form>
       <Projects projects={filteredProjects} />
-      <AtticProjects atticProjects={atticProjects} />
+      <AtticProjects />
     </div>
   )
 }
