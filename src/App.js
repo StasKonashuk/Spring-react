@@ -1,7 +1,7 @@
-import './App.css'
-import Header from './Header/Header'
-import Content from './Content/Content'
-import Footer from './Footer/Footer'
+import './App.css';
+import Header from './Header/Header';
+import Content from './Content/Content';
+import Footer from './Footer/Footer';
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
       <Content />
       <Footer />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
