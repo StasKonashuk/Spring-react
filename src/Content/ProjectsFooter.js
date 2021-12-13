@@ -1,11 +1,12 @@
-import React from 'react'
-import ProjectsFooterItem from './ProjectsFooterItem'
-import style from './Content.module.css'
+import React from 'react';
+import ProjectsFooterItem from './ProjectsFooterItem';
+import style from './Content.module.css';
+import data from '../data/data';
 
-const ProjectsFooter = ({ projectsFooterItems }) => {
-  const footerItem = [...projectsFooterItems].map(f => (
+const ProjectsFooter = () => {
+  const footerItem = data.projectsFooterItems.map(f => (
     <ProjectsFooterItem title={f.title} text={f.text} link={f.linkText} />
-  ))
+  ));
   return (
     <div className={style.contentFooter}>
       <div className={style.contentFooterContainer}>
@@ -18,7 +19,7 @@ const ProjectsFooter = ({ projectsFooterItems }) => {
         {footerItem}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ProjectsFooter
+export default ProjectsFooter;

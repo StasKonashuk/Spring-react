@@ -1,5 +1,5 @@
-import React from 'react'
-import style from './Content.module.css'
+import React from 'react';
+import style from './Content.module.css';
 
 const ProjectsFooterItem = ({ title, text, link }) => {
   return (
@@ -10,7 +10,7 @@ const ProjectsFooterItem = ({ title, text, link }) => {
         {link}
       </a>
     </div>
-  )
-}
+  );
+};
 
-export default ProjectsFooterItem
+export default ProjectsFooterItem;

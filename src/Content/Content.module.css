@@ -206,7 +206,8 @@
 .contentFooterTitle {
   font-family: Metropolis, sans-serif;
   color: var(--black);
-  font-weight: 700;
+  font-size: 20px;
+  font-weight: 900;
 }
 .contentFooterText {
   margin: 7px 0;
