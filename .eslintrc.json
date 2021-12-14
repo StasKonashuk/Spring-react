@@ -21,6 +21,22 @@
     "no-var": "error",
     "quotes": ["error", "single"],
     "no-multi-spaces": "error",
-    "space-in-parens": "error"
+    "space-in-parens": "error",
+    "react/function-component-definition": "off",
+    "arrow-body-style": "off",
+    "react/prop-types": "off",
+    "no-shadow": "off",
+    "react/self-closing-comp": [
+      "error",
+      {
+        "component": true,
+        "html": true
+      }
+    ],
+    "react/no-unknown-property": "warn",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "jsx-a11y/no-static-element-interactions": "off",
+    "import/order": "off",
+    "react/jsx-no-useless-fragment": "off"
   }
 }
