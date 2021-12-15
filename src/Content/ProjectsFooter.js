@@ -5,7 +5,12 @@ import data from '../data/data';
 
 const ProjectsFooter = () => {
   const footerItem = data.projectsFooterItems.map(f => (
-    <ProjectsFooterItem title={f.title} text={f.text} link={f.linkText} />
+    <ProjectsFooterItem
+      title={f.title}
+      text={f.text}
+      link={f.linkText}
+      key={f.id}
+    />
   ));
   return (
     <div className={style.contentFooter}>
