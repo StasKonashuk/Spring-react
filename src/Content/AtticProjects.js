@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { getAtticProjects } from '../redux/projects-selectors';
 
 const AtticProjects = () => {
-  const atticProjects = useSelector(state => getAtticProjects(state));
+  const atticProjects = useSelector(getAtticProjects);
   const atticProject = atticProjects.map(p => (
     <AtticProject title={p.title} text={p.text} key={p.id} />
   ));
