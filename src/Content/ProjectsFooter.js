@@ -1,10 +1,14 @@
 import React from 'react';
 import ProjectsFooterItem from './ProjectsFooterItem';
 import style from './Content.module.css';
-import data from '../data/data';
+import { getFooterProjectsItem } from '../redux/projects-selectors';
+import { useSelector } from 'react-redux';
 
 const ProjectsFooter = () => {
-  const footerItem = data.projectsFooterItems.map(f => (
+  const projectsFooterItems = useSelector(state =>
+    getFooterProjectsItem(state)
+  );
+  const footerItem = projectsFooterItems.map(f => (
     <ProjectsFooterItem
       title={f.title}
       text={f.text}
