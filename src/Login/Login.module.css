@@ -1,0 +1,133 @@
+.loginPageContainer {
+  margin: auto;
+  height: 867px;
+  padding-top: 72px;
+  overflow-y: hidden;
+  background: var(--div-background-color);
+}
+.loginPageContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 40px;
+  padding: 50px 0;
+  height: auto;
+}
+.logoContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.logo {
+  height: 106px;
+}
+.loginFormContainer {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
+  box-sizing: border-box;
+  padding: 20px 0 28px;
+  width: 700px;
+  height: 400px;
+}
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.loginFormInput {
+  font-size: 20px;
+  width: 80%;
+  padding: 14px 16px;
+  border: 1px solid #dddfe2;
+  height: 22px;
+  border-radius: 6px;
+  margin-bottom: 15px;
+}
+.loginFormInput:focus {
+  border: 2px solid #6db33f;
+  box-shadow: none;
+  outline: none;
+}
+.loginFormButton {
+  color: #fff;
+  border-radius: 6px;
+  border: none;
+  width: 85%;
+  padding: 15px 41px;
+  font-size: 20px;
+  font-weight: 700;
+  background-color: #6db33f;
+  transition: all 0.2s;
+}
+.loginFormButton:hover {
+  background-color: #5b9c2f;
+}
+.footerLoginFormContainer {
+  margin-top: 11px;
+  width: 100%;
+  overflow: hidden;
+  height: auto;
+  position: relative;
+  bottom: 0;
+}
+.leftFooterLoginContent {
+  background: url(../images/leftfooterLoginForm.png) no-repeat center;
+  background-size: 100% 120px;
+  width: 100%;
+  height: 150px;
+  position: relative;
+  bottom: 0px;
+  z-index: 5;
+}
+.rightFooterLoginContent {
+  background: url(../images/rightFooterLoginForm.png) no-repeat center;
+  background-size: 100% 120px;
+  height: 150px;
+  width: 100%;
+  position: relative;
+  bottom: 145px;
+}
+.requiredError {
+  color: red;
+  margin-bottom: 10px;
+  width: 80%;
+}
+.loginFormError {
+  border: red 2px solid;
+  color: red;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+  width: 81%;
+}
+@media (max-width: 900px) {
+  .logo {
+    height: 70px;
+  }
+  .loginFormContainer {
+    margin-bottom: 110px;
+    width: 500px;
+  }
+}
+@media (max-width: 550px) {
+  .logo {
+    height: 50px;
+  }
+  .loginFormContainer {
+    margin-bottom: 110px;
+    width: 300px;
+  }
+}
