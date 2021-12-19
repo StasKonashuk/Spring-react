@@ -2,7 +2,7 @@ import React from 'react';
 import AtticProject from './AtticProject';
 import style from './Content.module.css';
 import { useSelector } from 'react-redux';
-import { getAtticProjects } from '../redux/projects-selectors';
+import { getAtticProjects } from '../redux/projects/projects-selectors';
 
 const AtticProjects = () => {
   const atticProjects = useSelector(getAtticProjects);

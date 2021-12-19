@@ -1,7 +1,7 @@
 import React from 'react';
 import ProjectsFooterItem from './ProjectsFooterItem';
 import style from './Content.module.css';
-import { getFooterProjectsItem } from '../redux/projects-selectors';
+import { getFooterProjectsItem } from '../redux/projects/projects-selectors';
 import { useSelector } from 'react-redux';
 
 const ProjectsFooter = () => {

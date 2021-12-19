@@ -3,8 +3,8 @@ import Projects from './Projects';
 import style from './Content.module.css';
 import AtticProjects from './AtticProjects';
 import { useDispatch, useSelector, connect } from 'react-redux';
-import { actions } from '../redux/projects-reducer';
-import { getProjects } from '../redux/projects-selectors';
+import { actions } from '../redux/projects/projects-actions-creators';
+import { getProjects } from '../redux/projects/projects-selectors';
 
 const ProjectsInfo = () => {
   const [value, setValue] = useState('');

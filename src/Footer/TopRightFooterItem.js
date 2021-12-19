@@ -1,5 +1,5 @@
-import React from 'react'
-import style from './Footer.module.css'
+import React from 'react';
+import style from './Footer.module.css';
 
 const TopRightFooterItem = () => {
   return (
@@ -38,7 +38,7 @@ const TopRightFooterItem = () => {
         </div>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default TopRightFooterItem
+export default TopRightFooterItem;
