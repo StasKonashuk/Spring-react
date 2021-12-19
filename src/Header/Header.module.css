@@ -44,12 +44,12 @@ a {
   list-style-type: none;
   padding: 0;
   min-width: 705px;
-  margin: 0 10px 0 5px;
+  margin: 0;
 }
 .navItems > li {
   flex: 1 1 auto;
   position: relative;
-  margin: 0px 0px 0px 20px;
+  margin: 0px;
   padding: 23px 0;
 }
 .hasSubmenu {
@@ -130,6 +130,20 @@ a {
   height: 12px;
   width: 12px;
   margin-left: 5px;
+}
+.logOutButton {
+  font-weight: 700;
+  text-decoration: none;
+  color: white;
+  padding: 6px;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--green);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.logOutButton:hover {
+  background-color: var(--black);
 }
 @media (min-width: 1100px) {
   .navItems > li:hover .menuSublist {
@@ -343,5 +357,18 @@ a {
   .menuSublink {
     color: var(--light-blue);
     font-size: 25px;
+  }
+  .logOutButton {
+    margin-right: 300px;
+  }
+}
+@media (max-width: 700px) {
+  .logOutButton {
+    margin-right: 100px;
+  }
+}
+@media (max-width: 400px) {
+  .logOutButton {
+    margin-right: 20px;
   }
 }
