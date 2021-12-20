@@ -6,7 +6,6 @@ import { Route, Routes, Navigate } from 'react-router-dom';
 import LoginForm from './Login/LoginForm';
 import NotFound from './common/NotFound';
 import { useSelector } from 'react-redux';
-import { getIsAuth } from './redux/auth/auth-selectors';
 
 function App() {
   return (
@@ -20,7 +19,7 @@ function App() {
 }
 
 const Main = () => {
-  const isAuth = useSelector(getIsAuth);
+  const isAuth = useSelector(state => state.auth.isAuth);
 
   if (!isAuth) {
     return <Navigate to="/login" />;

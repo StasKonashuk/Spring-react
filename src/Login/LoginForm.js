@@ -1,14 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import style from './Login.module.css';
 import { logIn } from '../redux/auth/auth-thunks-creators';
 import { Navigate } from 'react-router-dom';
 import { Formik } from 'formik';
-import { getIsAuth, getErrorMsg } from '../redux/auth/auth-selectors';
 
 const LoginForm = () => {
-  const isAuth = useSelector(getIsAuth);
-  const errorMsg = useSelector(getErrorMsg);
+  const isAuth = useSelector(state => state.auth.isAuth);
+  const errorMsg = useSelector(state => state.auth.errorMsg);
   const dispatch = useDispatch();
 
   if (isAuth) {
