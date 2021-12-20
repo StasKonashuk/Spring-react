@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import style from './Login.module.css';
 import { logIn } from '../redux/auth/auth-thunks-creators';
@@ -14,7 +14,6 @@ const LoginForm = () => {
   if (isAuth) {
     return <Navigate to="/" />;
   }
-
   return (
     <div className={style.loginPageContainer}>
       <div className={style.loginPageContent}>
@@ -57,7 +56,7 @@ const LoginForm = () => {
               <form onSubmit={handleSubmit} className={style.loginForm}>
                 <h1>Log In Here</h1>
                 <input
-                  type="userName"
+                  type="text"
                   name="userName"
                   placeholder="Username"
                   onChange={handleChange}
