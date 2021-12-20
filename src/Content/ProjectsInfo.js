@@ -4,7 +4,6 @@ import style from './Content.module.css';
 import AtticProjects from './AtticProjects';
 import { useDispatch, useSelector, connect } from 'react-redux';
 import { actions } from '../redux/projects/projects-actions-creators';
-import { getProjects } from '../redux/projects/projects-selectors';
 
 const ProjectsInfo = () => {
   const [value, setValue] = useState('');
@@ -16,7 +15,7 @@ const ProjectsInfo = () => {
   };
 
   const filterdProjects = useSelector(state =>
-    getProjects(state).filter(proj => {
+    state.projects.projects.filter(proj => {
       return (
         proj.title.toLowerCase().includes(state.projects.value.toLowerCase()) ||
         proj.text.toLowerCase().includes(state.projects.value.toLowerCase())
