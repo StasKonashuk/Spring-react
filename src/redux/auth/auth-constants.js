@@ -1,3 +1,3 @@
-export const LOG_IN = 'LOG-IN';
-export const LOG_OUT = 'LOG-OUT';
-export const LOG_IN_FAILURE = 'LOG-IN-FAILURE';
+export const LOG_IN = 'LOG_IN';
+export const LOG_OUT = 'LOG_OUT';
+export const LOG_IN_FAILURE = 'LOG_IN_FAILURE';

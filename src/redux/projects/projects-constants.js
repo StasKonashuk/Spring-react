@@ -1,1 +1,1 @@
-export const SEARCH_PROJECT = 'SEARCH-PROJECT';
+export const SEARCH_PROJECT = 'SEARCH_PROJECT';
