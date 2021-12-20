@@ -1,10 +1,11 @@
 import React from 'react';
 import AtticProject from './AtticProject';
 import style from './Content.module.css';
-import data from '../data/data';
+import { useSelector } from 'react-redux';
 
 const AtticProjects = () => {
-  const atticProject = data.atticProjects.map(p => (
+  const atticProjects = useSelector(state => state.projects.atticProjects);
+  const atticProject = atticProjects.map(p => (
     <AtticProject title={p.title} text={p.text} key={p.id} />
   ));
   return (

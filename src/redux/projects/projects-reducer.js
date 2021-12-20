@@ -1,4 +1,6 @@
-const data = {
+import { SEARCH_PROJECT } from './projects-constants';
+
+const initialState = {
   projects: [
     {
       id: 1,
@@ -221,7 +223,21 @@ const data = {
       text: 'Check out all the upcoming events in the Spring community',
       linkText: 'View all'
     }
-  ]
+  ],
+  value: ''
 };
 
-export default data;
+const projectsReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case SEARCH_PROJECT: {
+      return {
+        ...state,
+        value: action.payload
+      };
+    }
+    default:
+      return state;
+  }
+};
+
+export default projectsReducer;

@@ -1,11 +1,19 @@
 import React from 'react';
 import ProjectsFooterItem from './ProjectsFooterItem';
 import style from './Content.module.css';
-import data from '../data/data';
+import { useSelector } from 'react-redux';
 
 const ProjectsFooter = () => {
-  const footerItem = data.projectsFooterItems.map(f => (
-    <ProjectsFooterItem title={f.title} text={f.text} link={f.linkText} />
+  const projectsFooterItems = useSelector(
+    state => state.projects.projectsFooterItems
+  );
+  const footerItem = projectsFooterItems.map(f => (
+    <ProjectsFooterItem
+      title={f.title}
+      text={f.text}
+      link={f.linkText}
+      key={f.id}
+    />
   ));
   return (
     <div className={style.contentFooter}>
