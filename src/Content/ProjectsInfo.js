@@ -1,13 +1,18 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Projects from './Projects';
 import style from './Content.module.css';
 import AtticProjects from './AtticProjects';
 import { useDispatch, useSelector, connect } from 'react-redux';
 import { actions } from '../redux/projects/projects-actions-creators';
+import { getProjects } from '../redux/projects/projects-thunk-creator';
 
 const ProjectsInfo = () => {
   const [value, setValue] = useState('');
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getProjects());
+  }, []);
 
   const searchHandler = val => {
     setValue(val);
