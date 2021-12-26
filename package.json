@@ -75,5 +75,5 @@
     "*.{js,jsx}": "eslint --cache --fix",
     "*.{js,css,md}": "prettier --write"
   },
-  "proxy": "http://localhost:5000"
+  "proxy": "https://spring-react-server.herokuapp.com"
 }
