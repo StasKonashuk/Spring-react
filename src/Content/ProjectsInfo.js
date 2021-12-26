@@ -19,6 +19,11 @@ const ProjectsInfo = () => {
     dispatch(actions.searchProject(val));
   };
 
+  const onBlurHandler = () => {
+    setValue('');
+    dispatch(actions.searchProject(''));
+  };
+
   const filterdProjects = useSelector(state =>
     state.projects.projects.filter(proj => {
       return (
@@ -37,6 +42,7 @@ const ProjectsInfo = () => {
           value={value}
           className={style.projInput}
           onChange={e => searchHandler(e.target.value)}
+          onBlur={() => onBlurHandler()}
         />
       </form>
       <Projects projects={filterdProjects} />
