@@ -6,13 +6,7 @@ jest.mock('../api/api');
 const authAPIMock = authAPI;
 
 describe('loginThunk', () => {
-  test('dispatch a login action', async () => {
-    const thunk = logIn('admin', '1234');
-    const dispatchMock = jest.fn();
-    await thunk(dispatchMock);
-    expect(dispatchMock).toBeCalledTimes(1);
-  });
-  describe('when login succeeds', () => {
+  describe('when login success', () => {
     beforeEach(() => {
       authAPIMock.login.mockResolvedValue({
         status: 200
