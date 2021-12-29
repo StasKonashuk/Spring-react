@@ -1,2 +1,0 @@
-export const SEARCH_PROJECT = 'SEARCH_PROJECT';
-export const GET_PROJECTS = 'GET_PROJECTS';

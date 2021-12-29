@@ -1,37 +1,28 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Projects from './Projects';
 import style from './Content.module.css';
 import AtticProjects from './AtticProjects';
-import { useDispatch, useSelector, connect } from 'react-redux';
-import { actions } from '../redux/projects/projects-actions-creators';
-import { getProjects } from '../redux/projects/projects-thunk-creator';
+import { useGetProjectsQuery } from '../api/springApi';
 
 const ProjectsInfo = () => {
   const [value, setValue] = useState('');
-  const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getProjects());
-  }, []);
+  const { data = { projects: [] } } = useGetProjectsQuery();
 
   const searchHandler = val => {
     setValue(val);
-    dispatch(actions.searchProject(val));
   };
 
   const onBlurHandler = () => {
     setValue('');
-    dispatch(actions.searchProject(''));
   };
 
-  const filterdProjects = useSelector(state =>
-    state.projects.projects.filter(proj => {
-      return (
-        proj.title.toLowerCase().includes(state.projects.value.toLowerCase()) ||
-        proj.text.toLowerCase().includes(state.projects.value.toLowerCase())
-      );
-    })
-  );
+  const filterdProjects = data.projects.filter(proj => {
+    return (
+      proj.title.toLowerCase().includes(value.toLowerCase()) ||
+      proj.text.toLowerCase().includes(value.toLowerCase())
+    );
+  });
 
   return (
     <div className={style.contentContainer}>
