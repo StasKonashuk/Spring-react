@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 export const springApi = createApi({
   reducerPath: 'springApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://spring-react-server.herokuapp.com'
+    baseUrl: process.env.REACT_APP_BACKEND_URL
   }),
   endpoints: build => ({
     getProjects: build.query({
