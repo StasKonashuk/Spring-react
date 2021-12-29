@@ -71,6 +71,7 @@
   font-weight: 700;
   background-color: #6db33f;
   transition: all 0.2s;
+  cursor: pointer;
 }
 .loginFormButton:hover {
   background-color: #5b9c2f;
