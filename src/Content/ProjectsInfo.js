@@ -2,26 +2,27 @@ import React, { useState } from 'react';
 import Projects from './Projects';
 import style from './Content.module.css';
 import AtticProjects from './AtticProjects';
-import { useDispatch, useSelector, connect } from 'react-redux';
-import { actions } from '../redux/projects/projects-actions-creators';
+import { useGetProjectsQuery } from '../api/springApi';
 
 const ProjectsInfo = () => {
   const [value, setValue] = useState('');
-  const dispatch = useDispatch();
+
+  const { data = { projects: [] } } = useGetProjectsQuery();
 
   const searchHandler = val => {
     setValue(val);
-    dispatch(actions.searchProject(val));
   };
 
-  const filterdProjects = useSelector(state =>
-    state.projects.projects.filter(proj => {
-      return (
-        proj.title.toLowerCase().includes(state.projects.value.toLowerCase()) ||
-        proj.text.toLowerCase().includes(state.projects.value.toLowerCase())
-      );
-    })
-  );
+  const onBlurHandler = () => {
+    setValue('');
+  };
+
+  const filterdProjects = data.projects.filter(proj => {
+    return (
+      proj.title.toLowerCase().includes(value.toLowerCase()) ||
+      proj.text.toLowerCase().includes(value.toLowerCase())
+    );
+  });
 
   return (
     <div className={style.contentContainer}>
@@ -32,6 +33,7 @@ const ProjectsInfo = () => {
           value={value}
           className={style.projInput}
           onChange={e => searchHandler(e.target.value)}
+          onBlur={() => onBlurHandler()}
         />
       </form>
       <Projects projects={filterdProjects} />

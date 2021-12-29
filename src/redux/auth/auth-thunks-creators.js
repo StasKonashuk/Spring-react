@@ -1,18 +1,12 @@
-import { actions } from './auth-actions-creators';
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { logInSuccess, logInFail } from './auth-reducer';
 
-const checkCredentials = params => {
-  if (params.userName.trim() !== 'admin' || params.password.trim() !== '1234') {
-    return false;
-  }
-  return true;
-};
-
-export const logIn = params => {
-  return dispatch => {
-    if (checkCredentials(params)) {
-      dispatch(actions.logIn(params));
-    } else {
-      dispatch(actions.logInFail('Invalid username or password'));
+export const logIn = createAsyncThunk('auth/login', (data, { dispatch }) => {
+  try {
+    if (data.userName) {
+      dispatch(logInSuccess(data.userName));
     }
-  };
-};
+  } catch (error) {
+    dispatch(logInFail('Invalid username or password'));
+  }
+});

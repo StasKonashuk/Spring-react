@@ -4,10 +4,12 @@
   "private": true,
   "homepage": "https://staskonashuk.github.io/spring-react",
   "dependencies": {
+    "@babel/runtime": "^7.16.5",
+    "@reduxjs/toolkit": "^1.7.1",
     "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "classnames": "^2.3.1",
+    "env-cmd": "^10.1.0",
     "formik": "^2.2.9",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -16,14 +18,16 @@
     "react-scripts": "4.0.3",
     "redux": "^4.1.2",
     "redux-thunk": "^2.4.1",
+    "regenerator-runtime": "^0.13.9",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "start": "react-scripts start",
+    "start:development": "env-cmd -e development react-scripts start",
+    "start:prod": "env-cmd -e production react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "jest",
     "eject": "react-scripts eject",
     "lint": "eslint src/**/*.js",
     "lint-fix": "eslint src/**/*.js --fix"
@@ -47,6 +51,13 @@
     ]
   },
   "devDependencies": {
+    "@babel/cli": "^7.16.0",
+    "@babel/core": "^7.16.5",
+    "@babel/node": "^7.16.5",
+    "@babel/plugin-transform-runtime": "^7.16.5",
+    "@babel/preset-env": "^7.16.5",
+    "@babel/preset-react": "^7.16.5",
+    "babel-jest": "^26.6.3",
     "eslint": "^8.4.1",
     "eslint-config-airbnb": "^19.0.2",
     "eslint-config-prettier": "^8.3.0",
@@ -55,6 +66,15 @@
     "eslint-plugin-react": "^7.27.1",
     "eslint-plugin-react-hooks": "^4.3.0",
     "gh-pages": "^3.2.3",
-    "prettier": "^2.5.1"
-  }
+    "husky": "^7.0.0",
+    "jest": "^26.6.0",
+    "lint-staged": "^12.1.4",
+    "prettier": "^2.5.1",
+    "react-test-renderer": "^17.0.2"
+  },
+  "lint-staged": {
+    "*.{js,jsx}": "eslint --cache --fix",
+    "*.{js,css,md}": "prettier --write"
+  },
+  "proxy": "https://spring-react-server.herokuapp.com"
 }

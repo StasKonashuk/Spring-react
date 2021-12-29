@@ -1,13 +1,15 @@
-import { combineReducers, createStore, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
-import projectsReducer from './projects/projects-reducer';
-import authReducer from './auth/auth-reducer';
+import { configureStore } from '@reduxjs/toolkit';
+import { setupListeners } from '@reduxjs/toolkit/dist/query';
+import { springApi } from '../api/springApi';
+import auth from './auth/auth-reducer';
 
-const reducers = combineReducers({
-  projects: projectsReducer,
-  auth: authReducer
+export const store = configureStore({
+  reducer: {
+    [springApi.reducerPath]: springApi.reducer,
+    auth
+  },
+  middleware: getDefaultMiddleware =>
+    getDefaultMiddleware().concat(springApi.middleware)
 });
 
-const store = createStore(reducers, applyMiddleware(thunk));
-
-export default store;
+setupListeners(store.dispatch);

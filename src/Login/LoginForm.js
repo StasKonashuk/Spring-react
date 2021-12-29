@@ -4,10 +4,12 @@ import style from './Login.module.css';
 import { logIn } from '../redux/auth/auth-thunks-creators';
 import { Navigate } from 'react-router-dom';
 import { Formik } from 'formik';
+import { useAuthMutation } from '../api/springApi';
 
 const LoginForm = () => {
   const isAuth = useSelector(state => state.auth.isAuth);
   const errorMsg = useSelector(state => state.auth.errorMsg);
+  const [auth] = useAuthMutation();
   const dispatch = useDispatch();
 
   if (isAuth) {
@@ -37,9 +39,14 @@ const LoginForm = () => {
               return errors;
             }}
             onSubmit={(values, { setSubmitting }) => {
-              setTimeout(() => {
-                dispatch(logIn(values));
-                setSubmitting(false);
+              setTimeout(async () => {
+                try {
+                  const data = await auth(values);
+                  dispatch(logIn(data.data));
+                  setSubmitting(false);
+                } catch (err) {
+                  console.log(err);
+                }
               }, 400);
             }}
           >

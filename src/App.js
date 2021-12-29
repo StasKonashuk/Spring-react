@@ -24,7 +24,6 @@ const Main = () => {
   if (!isAuth) {
     return <Navigate to="/login" />;
   }
-
   return (
     <div className="App">
       <Header />
