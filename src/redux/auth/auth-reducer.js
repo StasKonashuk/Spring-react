@@ -1,37 +1,31 @@
-import { LOG_IN, LOG_OUT, LOG_IN_FAILURE } from './auth-constants';
+import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = {
-  user: null,
-  errorMsg: '',
-  isAuth: false
-};
-
-const authReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case LOG_IN:
-      return {
-        ...state,
-        user: {
-          name: action.payload.name
-        },
-        errorMsg: '',
-        isAuth: true
+const authSlice = createSlice({
+  name: 'auth',
+  initialState: {
+    user: null,
+    errorMsg: '',
+    isAuth: false
+  },
+  reducers: {
+    logInSuccess(state, action) {
+      state.user = {
+        name: action.payload
       };
-    case LOG_OUT:
-      return {
-        ...state,
-        user: null,
-        errorMsg: '',
-        isAuth: false
-      };
-    case LOG_IN_FAILURE:
-      return {
-        ...state,
-        errorMsg: action.payload.errorMsg
-      };
-    default:
-      return state;
+      state.errorMsg = '';
+      state.isAuth = true;
+    },
+    logOut(state) {
+      state.user = null;
+      state.errorMsg = '';
+      state.isAuth = false;
+    },
+    logInFail(state, action) {
+      state.errorMsg = action.payload;
+    }
   }
-};
+});
 
-export default authReducer;
+export const { logInSuccess, logOut, logInFail } = authSlice.actions;
+
+export default authSlice.reducer;
