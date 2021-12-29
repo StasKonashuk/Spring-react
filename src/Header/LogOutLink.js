@@ -1,12 +1,12 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { actions } from '../redux/auth/auth-actions-creators';
+import { logOut } from '../redux/auth/auth-reducer';
 import style from './Header.module.css';
 
 const LogOutLink = () => {
   const dispatch = useDispatch();
-  const logoutCallBack = () => dispatch(actions.logOut());
+  const logoutCallBack = () => dispatch(logOut());
   return (
     <button
       className={style.logOutButton}
