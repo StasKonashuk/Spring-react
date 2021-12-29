@@ -5,6 +5,7 @@
   "homepage": "https://staskonashuk.github.io/spring-react",
   "dependencies": {
     "@babel/runtime": "^7.16.5",
+    "@reduxjs/toolkit": "^1.7.1",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.24.0",
