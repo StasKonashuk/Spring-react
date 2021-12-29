@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/spring-react/static/css/main.da870e6c.chunk.css",
-    "main.js": "/spring-react/static/js/main.06c80c4b.chunk.js",
-    "main.js.map": "/spring-react/static/js/main.06c80c4b.chunk.js.map",
+    "main.js": "/spring-react/static/js/main.ea5b2603.chunk.js",
+    "main.js.map": "/spring-react/static/js/main.ea5b2603.chunk.js.map",
     "runtime-main.js": "/spring-react/static/js/runtime-main.2b9e3d94.js",
     "runtime-main.js.map": "/spring-react/static/js/runtime-main.2b9e3d94.js.map",
     "static/js/2.ccfecbc8.chunk.js": "/spring-react/static/js/2.ccfecbc8.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.2b9e3d94.js",
     "static/js/2.ccfecbc8.chunk.js",
     "static/css/main.da870e6c.chunk.css",
-    "static/js/main.06c80c4b.chunk.js"
+    "static/js/main.ea5b2603.chunk.js"
   ]
 }
