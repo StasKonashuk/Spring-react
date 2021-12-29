@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/spring-react/static/css/main.da870e6c.chunk.css",
-    "main.js": "/spring-react/static/js/main.785c3b7a.chunk.js",
-    "main.js.map": "/spring-react/static/js/main.785c3b7a.chunk.js.map",
+    "main.css": "/spring-react/static/css/main.155802ec.chunk.css",
+    "main.js": "/spring-react/static/js/main.6adc415e.chunk.js",
+    "main.js.map": "/spring-react/static/js/main.6adc415e.chunk.js.map",
     "runtime-main.js": "/spring-react/static/js/runtime-main.2b9e3d94.js",
     "runtime-main.js.map": "/spring-react/static/js/runtime-main.2b9e3d94.js.map",
     "static/js/2.7da1d7a1.chunk.js": "/spring-react/static/js/2.7da1d7a1.chunk.js",
@@ -10,13 +10,13 @@
     "static/js/3.14b897bc.chunk.js": "/spring-react/static/js/3.14b897bc.chunk.js",
     "static/js/3.14b897bc.chunk.js.map": "/spring-react/static/js/3.14b897bc.chunk.js.map",
     "index.html": "/spring-react/index.html",
-    "static/css/main.da870e6c.chunk.css.map": "/spring-react/static/css/main.da870e6c.chunk.css.map",
+    "static/css/main.155802ec.chunk.css.map": "/spring-react/static/css/main.155802ec.chunk.css.map",
     "static/js/2.7da1d7a1.chunk.js.LICENSE.txt": "/spring-react/static/js/2.7da1d7a1.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.2b9e3d94.js",
     "static/js/2.7da1d7a1.chunk.js",
-    "static/css/main.da870e6c.chunk.css",
-    "static/js/main.785c3b7a.chunk.js"
+    "static/css/main.155802ec.chunk.css",
+    "static/js/main.6adc415e.chunk.js"
   ]
 }
