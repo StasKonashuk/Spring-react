@@ -1,12 +1,16 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { logOut } from '../redux/auth/auth-reducer';
+import { logOutThunk } from '../redux/auth/auth-thunks-creators';
 import style from './Header.module.css';
 
 const LogOutLink = () => {
   const dispatch = useDispatch();
-  const logoutCallBack = () => dispatch(logOut());
+
+  const logoutCallBack = () => {
+    dispatch(logOutThunk());
+  };
+
   return (
     <button
       className={style.logOutButton}
@@ -19,4 +23,5 @@ const LogOutLink = () => {
     </button>
   );
 };
+
 export default LogOutLink;
