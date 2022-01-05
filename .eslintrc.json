@@ -40,6 +40,7 @@
     "jsx-a11y/no-static-element-interactions": "off",
     "import/order": "off",
     "react/jsx-no-useless-fragment": "off",
-    "no-param-reassign": ["error", { "props": false }]
+    "no-param-reassign": ["error", { "props": false }],
+    "prefer-destructuring": "off"
   }
 }
