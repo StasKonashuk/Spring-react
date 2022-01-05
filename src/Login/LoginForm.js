@@ -2,19 +2,18 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import style from './Login.module.css';
 import { logIn } from '../redux/auth/auth-thunks-creators';
-import { Navigate } from 'react-router-dom';
+import { Navigate, NavLink } from 'react-router-dom';
 import { Formik } from 'formik';
-import { useAuthMutation } from '../api/springApi';
 
 const LoginForm = () => {
   const isAuth = useSelector(state => state.auth.isAuth);
   const errorMsg = useSelector(state => state.auth.errorMsg);
-  const [auth] = useAuthMutation();
   const dispatch = useDispatch();
 
   if (isAuth) {
     return <Navigate to="/" />;
   }
+
   return (
     <div className={style.loginPageContainer}>
       <div className={style.loginPageContent}>
@@ -41,8 +40,7 @@ const LoginForm = () => {
             onSubmit={(values, { setSubmitting }) => {
               setTimeout(async () => {
                 try {
-                  const data = await auth(values);
-                  dispatch(logIn(data.data));
+                  dispatch(logIn(values));
                   setSubmitting(false);
                 } catch (err) {
                   console.log(err);
@@ -98,6 +96,10 @@ const LoginForm = () => {
               </form>
             )}
           </Formik>
+
+          <NavLink className={style.signUpLink} to="/signup">
+            Sign Up
+          </NavLink>
         </div>
       </div>
       <div className={style.footerLoginFormContainer}>
