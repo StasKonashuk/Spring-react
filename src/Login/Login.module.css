@@ -1,6 +1,6 @@
 .loginPageContainer {
   margin: auto;
-  height: 867px;
+  height: auto;
   padding-top: 72px;
   overflow-y: hidden;
   background: var(--div-background-color);
@@ -24,7 +24,7 @@
   height: 106px;
 }
 .loginFormContainer {
-  margin-top: 50px;
+  margin-top: 120px;
   margin-bottom: 50px;
   display: flex;
   flex-direction: column;
@@ -37,7 +37,6 @@
   box-sizing: border-box;
   padding: 20px 0 28px;
   width: 700px;
-  height: 400px;
 }
 .loginForm {
   display: flex;
@@ -46,7 +45,6 @@
   justify-content: center;
   align-items: center;
 }
-
 .loginFormInput {
   font-size: 20px;
   width: 80%;
@@ -90,7 +88,7 @@
   width: 100%;
   height: 150px;
   position: relative;
-  bottom: 0px;
+  bottom: -165px;
   z-index: 5;
 }
 .rightFooterLoginContent {
@@ -99,7 +97,7 @@
   height: 150px;
   width: 100%;
   position: relative;
-  bottom: 145px;
+  bottom: -15px;
 }
 .requiredError {
   color: red;
@@ -113,6 +111,34 @@
   padding: 10px;
   margin-bottom: 10px;
   width: 81%;
+}
+.signUpLink {
+  color: rgb(100, 100, 240);
+  display: inline-block;
+  margin-top: 15px;
+  font-size: 20px;
+  font-weight: 700;
+  padding: 5px;
+  text-decoration: none;
+  cursor: pointer;
+  position: relative;
+}
+.signUpLink::before {
+  content: '';
+  position: absolute;
+  width: 90%;
+  height: 3px;
+  bottom: -3px;
+  left: 4px;
+  background-color: rgb(100, 100, 240);
+  visibility: hidden;
+  transform-origin: 0px 0px;
+  transform: scaleX(0);
+  transition: all 0.3s ease-in-out 0s;
+}
+.signUpLink:hover::before {
+  visibility: visible;
+  transform: scaleX(1);
 }
 @media (max-width: 900px) {
   .logo {
