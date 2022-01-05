@@ -1,13 +1,20 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Projects from './Projects';
 import style from './Content.module.css';
 import AtticProjects from './AtticProjects';
-import { useGetProjectsQuery } from '../api/springApi';
+import { useDispatch, useSelector } from 'react-redux';
+import { getProjectsThunk } from '../redux/projects/projects-thunk-creator';
 
 const ProjectsInfo = () => {
+  const dispatch = useDispatch();
+
+  useEffect(async () => {
+    dispatch(getProjectsThunk());
+  }, []);
+
   const [value, setValue] = useState('');
 
-  const { data = { projects: [] } } = useGetProjectsQuery();
+  const projects = useSelector(state => state.projects.projects.projects);
 
   const searchHandler = val => {
     setValue(val);
@@ -17,10 +24,10 @@ const ProjectsInfo = () => {
     setValue('');
   };
 
-  const filterdProjects = data.projects.filter(proj => {
+  const filterdProjects = projects.filter(proj => {
     return (
       proj.title.toLowerCase().includes(value.toLowerCase()) ||
-      proj.text.toLowerCase().includes(value.toLowerCase())
+      proj.project_info.toLowerCase().includes(value.toLowerCase())
     );
   });
 

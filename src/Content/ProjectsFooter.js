@@ -1,18 +1,22 @@
 import React from 'react';
 import ProjectsFooterItem from './ProjectsFooterItem';
 import style from './Content.module.css';
-import { useGetProjectsQuery } from '../api/springApi';
+import { useSelector } from 'react-redux';
 
 const ProjectsFooter = () => {
-  const { data = { projectsFooterItems: [] } } = useGetProjectsQuery();
-  const footerItem = data.projectsFooterItems.map(f => (
+  const footerProjects = useSelector(
+    state => state.projects.projects.footerProjects
+  );
+
+  const footerItem = footerProjects.map(f => (
     <ProjectsFooterItem
       title={f.title}
-      text={f.text}
-      link={f.linkText}
-      key={f.id}
+      text={f.project_info}
+      link={f.project_link}
+      key={f.footer_project_id}
     />
   ));
+
   return (
     <div className={style.contentFooter}>
       <div className={style.contentFooterContainer}>
