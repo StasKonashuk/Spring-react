@@ -1,22 +1,13 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import axios from 'axios';
 
-export const springApi = createApi({
-  reducerPath: 'springApi',
-  baseQuery: fetchBaseQuery({
-    baseUrl: process.env.REACT_APP_BACKEND_URL
-  }),
-  endpoints: build => ({
-    getProjects: build.query({
-      query: () => 'projects'
-    }),
-    auth: build.mutation({
-      query: ({ userName, password }) => ({
-        url: 'login',
-        method: 'POST',
-        body: { userName, password }
-      })
-    })
-  })
+const springApi = axios.create({
+  withCredentials: true,
+  baseURL: process.env.REACT_APP_BACKEND_URL
 });
 
-export const { useGetProjectsQuery, useAuthMutation } = springApi;
+springApi.interceptors.request.use(config => {
+  config.headers.Authorization = `Bearer ${localStorage.getItem('access')}`;
+  return config;
+});
+
+export default springApi;
