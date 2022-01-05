@@ -1,15 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/dist/query';
-import { springApi } from '../api/springApi';
 import auth from './auth/auth-reducer';
+import projects from './projects/projects-reducer';
 
 export const store = configureStore({
   reducer: {
-    [springApi.reducerPath]: springApi.reducer,
-    auth
-  },
-  middleware: getDefaultMiddleware =>
-    getDefaultMiddleware().concat(springApi.middleware)
+    auth,
+    projects
+  }
 });
 
 setupListeners(store.dispatch);
