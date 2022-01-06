@@ -27,7 +27,7 @@ const Main = () => {
 
   useEffect(async () => {
     if (localStorage.getItem('access')) dispatch(checkAuth());
-  }, []);
+  }, [dispatch]);
 
   const isAuth = useSelector(state => state.auth.isAuth);
 
