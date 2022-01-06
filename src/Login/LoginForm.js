@@ -37,21 +37,21 @@ const LoginForm = () => {
               }
               return errors;
             }}
-            onSubmit={(values, { setSubmitting }) => {
-              setTimeout(async () => {
-                try {
-                  dispatch(logIn(values));
-                  setSubmitting(false);
-                } catch (err) {
-                  console.log(err);
-                }
-              }, 400);
+            onSubmit={async (values, { setSubmitting }) => {
+              try {
+                await dispatch(logIn(values));
+                setSubmitting(false);
+              } catch (error) {
+                console.log(error);
+              }
             }}
           >
             {({
               values,
               errors,
               touched,
+              isValid,
+              dirty,
               handleChange,
               handleBlur,
               handleSubmit,
@@ -88,7 +88,7 @@ const LoginForm = () => {
                 )}
                 <button
                   type="submit"
-                  disabled={isSubmitting}
+                  disabled={isSubmitting || !dirty || !isValid}
                   className={style.loginFormButton}
                 >
                   Log In
