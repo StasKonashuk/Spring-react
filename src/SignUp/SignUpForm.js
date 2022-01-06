@@ -62,21 +62,21 @@ const SignUpForm = () => {
                 }
                 return errors;
               }}
-              onSubmit={(values, { setSubmitting }) => {
-                setTimeout(async () => {
-                  try {
-                    dispatch(signUpThunk(values));
-                    setSubmitting(false);
-                  } catch (error) {
-                    console.log(error);
-                  }
-                }, 400);
+              onSubmit={async (values, { setSubmitting }) => {
+                try {
+                  await dispatch(signUpThunk(values));
+                  setSubmitting(false);
+                } catch (error) {
+                  console.log(error);
+                }
               }}
             >
               {({
                 values,
                 errors,
                 touched,
+                isValid,
+                dirty,
                 handleChange,
                 handleBlur,
                 handleSubmit,
@@ -204,7 +204,7 @@ const SignUpForm = () => {
                     )}
                   <button
                     type="submit"
-                    disabled={isSubmitting}
+                    disabled={isSubmitting || !dirty || !isValid}
                     className={style.signUpFormButton}
                   >
                     Sign Up
