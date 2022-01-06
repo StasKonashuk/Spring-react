@@ -6,8 +6,10 @@ const springApi = axios.create({
 });
 
 springApi.interceptors.request.use(config => {
-  config.headers.Authorization = `Bearer ${localStorage.getItem('access')}`;
-  return config;
+  const token = localStorage.getItem('access');
+  const configHeader = config;
+  configHeader.headers.Authorization = `Bearer ${token}`;
+  return configHeader;
 });
 
 export default springApi;

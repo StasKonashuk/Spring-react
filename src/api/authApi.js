@@ -3,13 +3,13 @@ import springApi from './springApi';
 export const authAPI = {
   login({ userName, password }) {
     return springApi
-      .post('/login', { userName, password })
+      .post('/api/login', { userName, password })
       .then(res => res)
       .catch(error => error.response);
   },
   signUp({ userName, password, repeatPassword, firstName, lastName, age }) {
     return springApi
-      .post('/registration', {
+      .post('/api/registration', {
         userName,
         password,
         repeatPassword,
@@ -21,9 +21,9 @@ export const authAPI = {
       .catch(error => error.response);
   },
   logout() {
-    return springApi.delete('/refresh_token');
+    return springApi.delete('/api/refresh-token');
   },
   refresh() {
-    return springApi.get('/refresh_token').then(res => res.data);
+    return springApi.get('/api/refresh-token').then(res => res.data);
   }
 };

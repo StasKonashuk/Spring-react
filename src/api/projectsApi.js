@@ -2,6 +2,6 @@ import springApi from './springApi';
 
 export const projectsAPI = {
   getProjects() {
-    return springApi.get('/projects').then(res => res.data);
+    return springApi.get('/api/projects').then(res => res.data);
   }
 };
