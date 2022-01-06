@@ -10,7 +10,7 @@ const ProjectsInfo = () => {
 
   useEffect(async () => {
     dispatch(getProjectsThunk());
-  }, []);
+  }, [dispatch]);
 
   const [value, setValue] = useState('');
 
