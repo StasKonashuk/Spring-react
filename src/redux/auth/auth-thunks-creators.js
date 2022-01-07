@@ -52,7 +52,7 @@ export const signUpThunk = createAsyncThunk(
     try {
       const data = await authAPI.signUp(values);
       if (data.status === 400) {
-        const signUpErrors = JSON.parse(JSON.stringify(data.data));
+        const signUpErrors = JSON.parse(JSON.stringify(data.data.error));
         dispatch(
           signUpFail({
             signUpErrors
