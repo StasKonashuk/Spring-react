@@ -8,7 +8,8 @@ import NotFound from './common/NotFound';
 import { useDispatch, useSelector } from 'react-redux';
 import SignUpForm from './SignUp/SignUpForm';
 import { useEffect } from 'react';
-import { checkAuth } from './redux/auth/auth-thunks-creators';
+import { useRefreshMutation } from './api/authApi';
+import { setAuth } from './redux/auth/auth-reducer';
 
 function App() {
   return (
@@ -25,8 +26,19 @@ function App() {
 const Main = () => {
   const dispatch = useDispatch();
 
+  const [RefreshUser, { isSuccess, isError }] = useRefreshMutation();
+
   useEffect(async () => {
-    if (localStorage.getItem('access')) dispatch(checkAuth());
+    try {
+      if (localStorage.getItem('access')) {
+        const data = await RefreshUser(localStorage.getItem('refresh'));
+        if (data.data) {
+          dispatch(setAuth(data.data.accessToken));
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    }
   }, [dispatch]);
 
   const isAuth = useSelector(state => state.auth.isAuth);
