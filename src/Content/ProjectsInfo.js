@@ -3,14 +3,26 @@ import Projects from './Projects';
 import style from './Content.module.css';
 import AtticProjects from './AtticProjects';
 import { useDispatch, useSelector } from 'react-redux';
-import { getProjectsThunk } from '../redux/projects/projects-thunk-creator';
+import { getProjects } from '../redux/projects/projects-reducer';
+import { useGetProjectsQuery } from '../api/projectsApi';
 
 const ProjectsInfo = () => {
   const dispatch = useDispatch();
 
-  useEffect(async () => {
-    dispatch(getProjectsThunk());
-  }, [dispatch]);
+  const { data } = useGetProjectsQuery();
+
+  useEffect(() => {
+    try {
+      const projects = JSON.parse(JSON.stringify(data));
+      dispatch(
+        getProjects({
+          projects
+        })
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  }, [data]);
 
   const [value, setValue] = useState('');
 
