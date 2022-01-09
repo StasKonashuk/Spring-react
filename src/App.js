@@ -26,12 +26,12 @@ function App() {
 const Main = () => {
   const dispatch = useDispatch();
 
-  const [RefreshUser, { isSuccess, isError }] = useRefreshMutation();
+  const [refreshUser, { isSuccess, isError }] = useRefreshMutation();
 
   useEffect(async () => {
     try {
       if (localStorage.getItem('access')) {
-        const data = await RefreshUser(localStorage.getItem('refresh'));
+        const data = await refreshUser(localStorage.getItem('refresh'));
         if (data.data) {
           dispatch(setAuth(data.data.accessToken));
         }
