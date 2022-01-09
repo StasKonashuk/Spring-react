@@ -1,6 +1,6 @@
-import springApi from './springApi';
+import { springApi } from './springApi';
 
-export const authAPI = {
+/* export const authAPI = {
   login({ userName, password }) {
     return springApi
       .post('/api/login', { userName, password })
@@ -26,4 +26,50 @@ export const authAPI = {
   refresh() {
     return springApi.get('/api/refresh-token').then(res => res.data);
   }
-};
+}; */
+
+const authApi = springApi.injectEndpoints({
+  endpoints: builder => ({
+    logIn: builder.mutation({
+      query: ({ userName, password }) => ({
+        url: '/api/login',
+        method: 'post',
+        body: { userName, password }
+      })
+    }),
+    signUp: builder.mutation({
+      query: ({
+        userName,
+        password,
+        repeatPassword,
+        firstName,
+        lastName,
+        age
+      }) => ({
+        url: '/api/registration',
+        method: 'post',
+        body: { userName, password, repeatPassword, firstName, lastName, age }
+      })
+    }),
+    logout: builder.mutation({
+      query: () => ({
+        url: '/api/refresh-token',
+        method: 'delete'
+      })
+    }),
+    refresh: builder.mutation({
+      query: token => ({
+        url: '/api/refresh-token',
+        method: 'post',
+        body: { token }
+      })
+    })
+  })
+});
+
+export const {
+  useLogInMutation,
+  useSignUpMutation,
+  useLogoutMutation,
+  useRefreshMutation
+} = authApi;
