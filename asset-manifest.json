@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/spring-react*/static/css/main.afe6f092.chunk.css",
-    "main.js": "/spring-react*/static/js/main.44bf752a.chunk.js",
-    "main.js.map": "/spring-react*/static/js/main.44bf752a.chunk.js.map",
-    "runtime-main.js": "/spring-react*/static/js/runtime-main.b2ae836f.js",
-    "runtime-main.js.map": "/spring-react*/static/js/runtime-main.b2ae836f.js.map",
-    "static/js/2.44681dae.chunk.js": "/spring-react*/static/js/2.44681dae.chunk.js",
-    "static/js/2.44681dae.chunk.js.map": "/spring-react*/static/js/2.44681dae.chunk.js.map",
-    "static/js/3.69e79540.chunk.js": "/spring-react*/static/js/3.69e79540.chunk.js",
-    "static/js/3.69e79540.chunk.js.map": "/spring-react*/static/js/3.69e79540.chunk.js.map",
-    "index.html": "/spring-react*/index.html",
-    "static/css/main.afe6f092.chunk.css.map": "/spring-react*/static/css/main.afe6f092.chunk.css.map",
-    "static/js/2.44681dae.chunk.js.LICENSE.txt": "/spring-react*/static/js/2.44681dae.chunk.js.LICENSE.txt"
+    "main.css": "https://staskonashuk.github.io/spring-react*/static/css/main.afe6f092.chunk.css",
+    "main.js": "https://staskonashuk.github.io/spring-react*/static/js/main.35f936af.chunk.js",
+    "main.js.map": "https://staskonashuk.github.io/spring-react*/static/js/main.35f936af.chunk.js.map",
+    "runtime-main.js": "https://staskonashuk.github.io/spring-react*/static/js/runtime-main.5d7fe2a7.js",
+    "runtime-main.js.map": "https://staskonashuk.github.io/spring-react*/static/js/runtime-main.5d7fe2a7.js.map",
+    "static/js/2.44681dae.chunk.js": "https://staskonashuk.github.io/spring-react*/static/js/2.44681dae.chunk.js",
+    "static/js/2.44681dae.chunk.js.map": "https://staskonashuk.github.io/spring-react*/static/js/2.44681dae.chunk.js.map",
+    "static/js/3.69e79540.chunk.js": "https://staskonashuk.github.io/spring-react*/static/js/3.69e79540.chunk.js",
+    "static/js/3.69e79540.chunk.js.map": "https://staskonashuk.github.io/spring-react*/static/js/3.69e79540.chunk.js.map",
+    "index.html": "https://staskonashuk.github.io/spring-react*/index.html",
+    "static/css/main.afe6f092.chunk.css.map": "https://staskonashuk.github.io/spring-react*/static/css/main.afe6f092.chunk.css.map",
+    "static/js/2.44681dae.chunk.js.LICENSE.txt": "https://staskonashuk.github.io/spring-react*/static/js/2.44681dae.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.b2ae836f.js",
+    "static/js/runtime-main.5d7fe2a7.js",
     "static/js/2.44681dae.chunk.js",
     "static/css/main.afe6f092.chunk.css",
-    "static/js/main.44bf752a.chunk.js"
+    "static/js/main.35f936af.chunk.js"
   ]
 }
