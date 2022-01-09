@@ -11,10 +11,10 @@ const ProjectsInfo = () => {
 
   const { data, isSuccess } = useGetProjectsQuery();
 
-  useEffect(async () => {
+  useEffect(() => {
     try {
       if (isSuccess) {
-        const projects = await JSON.parse(JSON.stringify(data));
+        const projects = data;
         dispatch(
           getProjects({
             projects
