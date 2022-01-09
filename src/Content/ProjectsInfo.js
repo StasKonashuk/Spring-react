@@ -14,7 +14,6 @@ const ProjectsInfo = () => {
   useEffect(async () => {
     try {
       if (isSuccess) {
-        console.log(data);
         const projects = await JSON.parse(JSON.stringify(data));
         dispatch(
           getProjects({
