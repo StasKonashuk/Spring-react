@@ -1,14 +1,17 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import style from './Login.module.css';
-import { logIn } from '../redux/auth/auth-thunks-creators';
 import { Navigate, NavLink } from 'react-router-dom';
+import { logInFail, logInSuccess } from '../redux/auth/auth-reducer';
 import { Formik } from 'formik';
+import { useLogInMutation } from '../api/authApi';
 
 const LoginForm = () => {
   const isAuth = useSelector(state => state.auth.isAuth);
   const errorMsg = useSelector(state => state.auth.errorMsg);
   const dispatch = useDispatch();
+
+  const [logInUser] = useLogInMutation();
 
   if (isAuth) {
     return <Navigate to="/" />;
@@ -39,7 +42,18 @@ const LoginForm = () => {
             }}
             onSubmit={async (values, { setSubmitting }) => {
               try {
-                await dispatch(logIn(values));
+                const data = await logInUser(values);
+                if (data.error) {
+                  dispatch(logInFail(data.error.data.message));
+                }
+                if (data.data) {
+                  dispatch(
+                    logInSuccess({
+                      access: data.data.accessToken,
+                      refresh: data.data.refreshToken
+                    })
+                  );
+                }
                 setSubmitting(false);
               } catch (error) {
                 console.log(error);
@@ -96,7 +110,6 @@ const LoginForm = () => {
               </form>
             )}
           </Formik>
-
           <NavLink className={style.signUpLink} to="/signup">
             Sign Up
           </NavLink>
