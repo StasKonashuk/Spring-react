@@ -75,6 +75,5 @@
   "lint-staged": {
     "*.{js,jsx}": "eslint --cache --fix",
     "*.{js,css,md}": "prettier --write"
-  },
-  "proxy": "https://spring-react-server.herokuapp.com"
+  }
 }
