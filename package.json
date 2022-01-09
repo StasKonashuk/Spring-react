@@ -25,7 +25,7 @@
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "start:development": "env-cmd -e development react-scripts start",
+    "start": "react-scripts start",
     "start:prod": "env-cmd -e production react-scripts start",
     "build": "react-scripts build",
     "test": "jest",
