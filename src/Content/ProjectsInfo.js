@@ -9,16 +9,19 @@ import { useGetProjectsQuery } from '../api/projectsApi';
 const ProjectsInfo = () => {
   const dispatch = useDispatch();
 
-  const { data } = useGetProjectsQuery();
+  const { data, isSuccess } = useGetProjectsQuery();
 
-  useEffect(() => {
+  useEffect(async () => {
     try {
-      const projects = JSON.parse(JSON.stringify(data));
-      dispatch(
-        getProjects({
-          projects
-        })
-      );
+      if (isSuccess) {
+        console.log(data);
+        const projects = await JSON.parse(JSON.stringify(data));
+        dispatch(
+          getProjects({
+            projects
+          })
+        );
+      }
     } catch (error) {
       console.log(error);
     }
