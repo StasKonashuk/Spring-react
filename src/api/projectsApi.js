@@ -1,7 +1,13 @@
-import springApi from './springApi';
+import { springApi } from './springApi';
 
-export const projectsAPI = {
-  getProjects() {
-    return springApi.get('/api/projects').then(res => res.data);
-  }
-};
+export const projectsAPI = springApi.injectEndpoints({
+  endpoints: builder => ({
+    getProjects: builder.query({
+      query: () => ({
+        url: '/api/projects'
+      })
+    })
+  })
+});
+
+export const { useGetProjectsQuery } = projectsAPI;
