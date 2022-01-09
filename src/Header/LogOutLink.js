@@ -1,14 +1,22 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { logOutThunk } from '../redux/auth/auth-thunks-creators';
+import { logOut } from '../redux/auth/auth-reducer';
 import style from './Header.module.css';
+import { useLogoutMutation } from '../api/authApi';
 
 const LogOutLink = () => {
   const dispatch = useDispatch();
 
-  const logoutCallBack = () => {
-    dispatch(logOutThunk());
+  const [logOutUser] = useLogoutMutation();
+
+  const logoutCallBack = async () => {
+    try {
+      logOutUser();
+      dispatch(logOut());
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
