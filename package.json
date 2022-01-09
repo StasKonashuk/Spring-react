@@ -2,6 +2,7 @@
   "name": "spring-react",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://staskonashuk.github.io/spring-react",
   "dependencies": {
     "@babel/runtime": "^7.16.5",
     "@reduxjs/toolkit": "^1.7.1",
@@ -24,7 +25,7 @@
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "start": "react-scripts start",
+    "start:development": "env-cmd -e development react-scripts start",
     "start:prod": "env-cmd -e production react-scripts start",
     "build": "react-scripts build",
     "test": "jest",
@@ -75,5 +76,6 @@
   "lint-staged": {
     "*.{js,jsx}": "eslint --cache --fix",
     "*.{js,css,md}": "prettier --write"
-  }
+  },
+  "proxy": "https://spring-react-server.herokuapp.com"
 }
