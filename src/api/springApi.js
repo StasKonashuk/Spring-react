@@ -1,15 +1,18 @@
-import axios from 'axios';
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-const springApi = axios.create({
-  withCredentials: true,
-  baseURL: process.env.REACT_APP_BACKEND_URL
+const fetchWithIntercepts = fetchBaseQuery({
+  baseUrl: process.env.REACT_APP_BACKEND_URL,
+  prepareHeaders: (headers, { getState }) => {
+    const token = getState().auth.access;
+    if (token) {
+      headers.set('Authorization', `Bearer ${token}`);
+    }
+    return headers;
+  }
 });
 
-springApi.interceptors.request.use(config => {
-  const token = localStorage.getItem('access');
-  const configHeader = config;
-  configHeader.headers.Authorization = `Bearer ${token}`;
-  return configHeader;
+export const springApi = createApi({
+  reducerPath: 'springApi',
+  baseQuery: fetchWithIntercepts,
+  endpoints: () => ({})
 });
-
-export default springApi;
