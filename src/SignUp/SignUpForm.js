@@ -3,13 +3,15 @@ import style from './SignUp.module.css';
 import { NavLink } from 'react-router-dom';
 import { Formik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
-import { signUpRefresh } from '../redux/auth/auth-reducer';
-import { signUpThunk } from '../redux/auth/auth-thunks-creators';
+import { signUpRefresh, signUpFail, signUp } from '../redux/auth/auth-reducer';
+import { useSignUpMutation } from '../api/authApi';
 
 const SignUpForm = () => {
   const dispatch = useDispatch();
 
   const succesMsg = useSelector(state => state.auth.message);
+
+  const [signUpUser] = useSignUpMutation();
 
   useEffect(() => {
     dispatch(signUpRefresh());
@@ -64,7 +66,25 @@ const SignUpForm = () => {
               }}
               onSubmit={async (values, { setSubmitting }) => {
                 try {
-                  await dispatch(signUpThunk(values));
+                  const data = await signUpUser(values);
+                  if (data.data) {
+                    dispatch(signUp(data.data.message));
+                  }
+                  if (data.error) {
+                    if (data.error.status === 400) {
+                      const signUpErrors = JSON.parse(
+                        JSON.stringify(data.error.data.error)
+                      );
+                      dispatch(
+                        signUpFail({
+                          signUpErrors
+                        })
+                      );
+                    }
+                    if (data.error.status === 401) {
+                      dispatch(signUp(data.error.data.message));
+                    }
+                  }
                   setSubmitting(false);
                 } catch (error) {
                   console.log(error);
