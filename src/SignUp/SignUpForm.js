@@ -72,12 +72,9 @@ const SignUpForm = () => {
                   }
                   if (data.error) {
                     if (data.error.status === 400) {
-                      const signUpErrors = JSON.parse(
-                        JSON.stringify(data.error.data.error)
-                      );
                       dispatch(
                         signUpFail({
-                          signUpErrors
+                          signUpErrors: data.error.data.error
                         })
                       );
                     }
