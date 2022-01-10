@@ -4,7 +4,12 @@ import Project from './Project';
 
 const Projects = ({ projects }) => {
   const project = projects.map(p => (
-    <Project imageUrl={p.imageUrl} title={p.title} text={p.text} key={p.id} />
+    <Project
+      imageUrl={p.image_url}
+      title={p.title}
+      text={p.project_info}
+      key={p.project_id}
+    />
   ));
   return (
     <div className={style.projContent}>

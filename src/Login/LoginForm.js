@@ -1,20 +1,22 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import style from './Login.module.css';
-import { logIn } from '../redux/auth/auth-thunks-creators';
-import { Navigate } from 'react-router-dom';
+import { Navigate, NavLink } from 'react-router-dom';
+import { logInFail, logInSuccess } from '../redux/auth/auth-reducer';
 import { Formik } from 'formik';
-import { useAuthMutation } from '../api/springApi';
+import { useLogInMutation } from '../api/authApi';
 
 const LoginForm = () => {
   const isAuth = useSelector(state => state.auth.isAuth);
   const errorMsg = useSelector(state => state.auth.errorMsg);
-  const [auth] = useAuthMutation();
   const dispatch = useDispatch();
+
+  const [logInUser] = useLogInMutation();
 
   if (isAuth) {
     return <Navigate to="/" />;
   }
+
   return (
     <div className={style.loginPageContainer}>
       <div className={style.loginPageContent}>
@@ -38,22 +40,32 @@ const LoginForm = () => {
               }
               return errors;
             }}
-            onSubmit={(values, { setSubmitting }) => {
-              setTimeout(async () => {
-                try {
-                  const data = await auth(values);
-                  dispatch(logIn(data.data));
-                  setSubmitting(false);
-                } catch (err) {
-                  console.log(err);
+            onSubmit={async (values, { setSubmitting }) => {
+              try {
+                const data = await logInUser(values);
+                if (data.error) {
+                  dispatch(logInFail(data.error.data.message));
                 }
-              }, 400);
+                if (data.data) {
+                  dispatch(
+                    logInSuccess({
+                      access: data.data.accessToken,
+                      refresh: data.data.refreshToken
+                    })
+                  );
+                }
+                setSubmitting(false);
+              } catch (error) {
+                console.log(error);
+              }
             }}
           >
             {({
               values,
               errors,
               touched,
+              isValid,
+              dirty,
               handleChange,
               handleBlur,
               handleSubmit,
@@ -90,7 +102,7 @@ const LoginForm = () => {
                 )}
                 <button
                   type="submit"
-                  disabled={isSubmitting}
+                  disabled={isSubmitting || !dirty || !isValid}
                   className={style.loginFormButton}
                 >
                   Log In
@@ -98,6 +110,9 @@ const LoginForm = () => {
               </form>
             )}
           </Formik>
+          <NavLink className={style.signUpLink} to="/signup">
+            Sign Up
+          </NavLink>
         </div>
       </div>
       <div className={style.footerLoginFormContainer}>
